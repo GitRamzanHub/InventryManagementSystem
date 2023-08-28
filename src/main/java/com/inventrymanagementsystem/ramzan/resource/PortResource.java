@@ -25,11 +25,6 @@ public class PortResource {
     @NotBlank(message = "Port Address Should not Blank")
     private String portAddress;
 
-    @CreationTimestamp
-    private Date incomingStockDate;
-
-    private Date outgoingStockDate;
-
     private List<Brand> brands;
 
 

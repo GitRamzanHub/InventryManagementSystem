@@ -1,44 +1,43 @@
-package com.inventrymanagementsystem.ramzan.resource;
+package com.inventrymanagementsystem.ramzan.dto;
 
 import com.inventrymanagementsystem.ramzan.model.Port;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @ToString
 @Builder
-public class BrandResource {
-
+public class BrandDTO {
     private Long brandId;
 
-    @NotBlank(message = "Brand Name Should not be Empty")
+    @UniqueElements
+    @NotBlank(message = "brand Name shouldn't blank.")
     private String brandName;
 
-    @NotBlank(message = "Item Name Should not be Empty")
-    private String item; // (name of the rice)
+    private String item;
 
-    @NotBlank(message = "Number Of Bags Should not be Empty")
     private double numberOfBags;
 
     @CreationTimestamp
     private Date incomingStockDate;
 
+    @UpdateTimestamp
     private Date outgoingStockDate;
 
     private double bagKg;
 
-    private String bagType; // (PP, BOPP)
+    private String bagType;
 
-    @NotBlank(message = "Qty Should not Empty")
     private double quantity;
 
-    private List<PortResource> ports;
+    private Port port = new Port();
 }
