@@ -106,5 +106,18 @@ public class BrandController {
     }
 
     // adding incoming stock
-    // todo with adding incoming stocks
+    @PutMapping("/incoming/{portId}")
+    public ResponseEntity<BrandDTO> incomingBrand(@RequestBody BrandDTO incomingBrand, @PathVariable Long portId){
+
+        // calling Brand Services to do the function
+        return new ResponseEntity<>(brandService.addIncomingBrand(incomingBrand, portId), HttpStatus.OK);
+    }
+
+    // delete the brand
+    // todo with deleting the brand only if the number of bags become 0
+    @DeleteMapping("/delete/{brandId}")
+    public ResponseEntity<String> deleteBrand(@PathVariable Long brandId){
+        String result = brandService.deleteBrandById(brandId);
+        return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+    }
 }
