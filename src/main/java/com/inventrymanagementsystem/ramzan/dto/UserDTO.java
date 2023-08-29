@@ -1,18 +1,19 @@
-package com.inventrymanagementsystem.ramzan.resource;
+package com.inventrymanagementsystem.ramzan.dto;
 
+import com.inventrymanagementsystem.ramzan.enums.Role;
 import lombok.*;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@Builder
 @AllArgsConstructor
+@NoArgsConstructor
+@Data
 @ToString
-public class UserResource {
+@Builder
+public class UserDTO {
     private Long userId;
 
     @UniqueElements
@@ -25,6 +26,5 @@ public class UserResource {
     @NotBlank(message = "password is Mandatory")
     private String password;
 
-    private String role = "USER";
-
+    private Role role;
 }

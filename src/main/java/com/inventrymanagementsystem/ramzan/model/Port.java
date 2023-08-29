@@ -2,7 +2,6 @@ package com.inventrymanagementsystem.ramzan.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inventrymanagementsystem.ramzan.dto.PortDTO;
-import com.inventrymanagementsystem.ramzan.resource.PortResource;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,25 +31,6 @@ public class Port {
     @JsonIgnore
     private List<Brand> brands = new ArrayList<Brand>();
 
-    // PortResouces to Port Entity
-    public static Port toPortEntity(PortResource portResource) {
-        return Port.builder()
-                .port_id(portResource.getPort_id())
-                .port_name(portResource.getPortName())
-                .port_address(portResource.getPortAddress())
-                .build();
-    }
-
-    // Port Entity to PortResource
-
-//    public static PortResource toPortResource(Port port) {
-//        return PortResource.builder()
-//                .port_id(port.getPort_id())
-//                .portName(port.getPort_name())
-//                .portAddress(port.getPort_address())
-//                .build();
-//    }
-
     // Port Entity to PortDTO
     public static PortDTO toPortDto(Port port) {
 
@@ -71,14 +51,4 @@ public class Port {
                 .brands(portDTO.getBrands())
                 .build();
     }
-
-//    public static List<PortResource> toPortResource(List<Port> port){
-//        if(CollectionUtils.isEmpty(port)){
-//            return new ArrayList<>();
-//        }
-//        else{
-//
-//            return port.stream().map(Port :: toPortResource).collect(Collectors.toList());
-//        }
-//    }
 }

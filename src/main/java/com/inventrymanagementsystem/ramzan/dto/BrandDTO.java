@@ -1,5 +1,6 @@
 package com.inventrymanagementsystem.ramzan.dto;
 
+import com.inventrymanagementsystem.ramzan.enums.Role;
 import com.inventrymanagementsystem.ramzan.model.Port;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -34,6 +35,8 @@ public class BrandDTO {
     private Date outgoingStockDate;
 
     private double bagKg;
+
+    private Role role;
 
     private String bagType;
 

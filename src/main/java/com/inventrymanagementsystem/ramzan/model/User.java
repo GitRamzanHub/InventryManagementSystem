@@ -1,11 +1,16 @@
 package com.inventrymanagementsystem.ramzan.model;
 
-import com.inventrymanagementsystem.ramzan.resource.UserResource;
+import com.inventrymanagementsystem.ramzan.dto.UserDTO;
+import com.inventrymanagementsystem.ramzan.enums.Role;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Optional;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "user")
@@ -14,11 +19,10 @@ import java.util.Optional;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long user_id;
-
 
     private String username;
 
@@ -28,21 +32,23 @@ public class User {
 
     private String password;
 
-    private String role = "USER";
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role" ,columnDefinition = "varchar(30) default 'USER'")
+    private Role role;
 
-    // UserResource to UserResource
-    public static User toUserEntity(UserResource userResource){
+    // UserResource to User
+    public static User toUserEntity(UserDTO userDTO){
         return User.builder()
-                .user_id(userResource.getUserId())
-                .username(userResource.getUsername())
-                .email(userResource.getEmail())
-                .password(userResource.getPassword())
-                .role(userResource.getRole())
+                .user_id(userDTO.getUserId())
+                .username(userDTO.getUsername())
+                .email(userDTO.getEmail())
+                .password(userDTO.getPassword())
+                .role(userDTO.getRole())
                 .build();
     }
 
-    public static UserResource toUserResource(User user){
-        return UserResource.builder()
+    public static UserDTO toUserDTO(User user){
+        return UserDTO.builder()
                 .userId(user.getUser_id())
                 .username(user.getUsername())
                 .email(user.getEmail())
@@ -50,4 +56,5 @@ public class User {
                 .role(user.getRole())
                 .build();
     }
+
 }

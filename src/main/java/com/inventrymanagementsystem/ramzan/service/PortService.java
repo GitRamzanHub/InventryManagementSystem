@@ -3,7 +3,6 @@ package com.inventrymanagementsystem.ramzan.service;
 import com.inventrymanagementsystem.ramzan.dto.PortDTO;
 import com.inventrymanagementsystem.ramzan.model.Port;
 import com.inventrymanagementsystem.ramzan.repository.PortRepository;
-import com.inventrymanagementsystem.ramzan.resource.PortResource;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

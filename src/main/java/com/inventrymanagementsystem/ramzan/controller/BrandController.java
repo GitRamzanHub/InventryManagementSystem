@@ -2,12 +2,10 @@ package com.inventrymanagementsystem.ramzan.controller;
 
 import com.inventrymanagementsystem.ramzan.dto.BrandDTO;
 import com.inventrymanagementsystem.ramzan.exception.PortNotFound;
-import com.inventrymanagementsystem.ramzan.exception.UserNotFoundException;
 import com.inventrymanagementsystem.ramzan.model.Brand;
 import com.inventrymanagementsystem.ramzan.model.Port;
 import com.inventrymanagementsystem.ramzan.repository.BrandRepository;
 import com.inventrymanagementsystem.ramzan.repository.PortRepository;
-import com.inventrymanagementsystem.ramzan.resource.BrandResource;
 import com.inventrymanagementsystem.ramzan.service.BrandService;
 import com.inventrymanagementsystem.ramzan.service.PortService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.*;
-import java.time.LocalDateTime;
 import java.util.*;
 
 @RestController
@@ -106,5 +102,17 @@ public class BrandController {
     }
 
     // adding incoming stock
-    // todo with adding incoming stocks
+    @PutMapping("/incoming/{portId}")
+    public ResponseEntity<BrandDTO> incomingBrand(@RequestBody BrandDTO incomingBrand, @PathVariable Long portId){
+
+        // calling Brand Services to do the function
+        return new ResponseEntity<>(brandService.addIncomingBrand(incomingBrand, portId), HttpStatus.OK);
+    }
+
+    // delete the brand
+    @DeleteMapping("/delete/{brandId}")
+    public ResponseEntity<String> deleteBrand(@PathVariable Long brandId){
+        String result = brandService.deleteBrandById(brandId);
+        return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+    }
 }

@@ -2,18 +2,12 @@ package com.inventrymanagementsystem.ramzan.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inventrymanagementsystem.ramzan.dto.BrandDTO;
-import com.inventrymanagementsystem.ramzan.repository.PortRepository;
-import com.inventrymanagementsystem.ramzan.resource.BrandResource;
-import com.inventrymanagementsystem.ramzan.resource.PortResource;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "brand")

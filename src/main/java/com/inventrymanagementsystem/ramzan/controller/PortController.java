@@ -1,8 +1,6 @@
 package com.inventrymanagementsystem.ramzan.controller;
 
 import com.inventrymanagementsystem.ramzan.dto.PortDTO;
-import com.inventrymanagementsystem.ramzan.model.Port;
-import com.inventrymanagementsystem.ramzan.resource.PortResource;
 import com.inventrymanagementsystem.ramzan.service.PortService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
